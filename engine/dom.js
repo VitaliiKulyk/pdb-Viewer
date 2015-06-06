@@ -17,3 +17,11 @@ $(document).ready(function () {
         }
     });
 });
+
+$(window).resize(function () {
+    var div = document.getElementById("molecula");
+    var W = parseInt(div.clientWidth);
+    var H = parseInt(document.documentElement.clientHeight - div.offsetTop - 20);
+    $("#webjs").width(W).height(H);
+    renderer.setSize(W, H);
+});

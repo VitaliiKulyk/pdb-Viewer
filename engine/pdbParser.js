@@ -17,15 +17,14 @@
 
         var connections = [];
 
-        // inner function
+        // inner private function
         var addConnections = function (line) {
             var cursor = 11, step = 5;
             var from = parseInt(line.substr(6, 5));
             for (var i = 0; i < 4; i++) {
                 var to = parseInt(line.substr(cursor, step));
-                if (to) {
+                if (to)
                     connections.push([from, to]);
-                }
                 cursor += step;
             }
         }
@@ -33,9 +32,8 @@
         var makeUniqueConnections = function () {
             var uniqueConnections = [];
             _.each(connections, function (value) {
-                if (!_.contains(connections, [value[1], value[0]])) {
+                if (!_.contains(connections, [value[1], value[0]]))
                     uniqueConnections.push(value);
-                }
             });
             return uniqueConnections;
         }
@@ -43,9 +41,8 @@
         // function flow
         var string = pdbString.split("\n");
         for (var i = 0; i < string.length; i++) {
-            if (string[i].substr(0, 6) === "CONECT") {
+            if (string[i].substr(0, 6) === "CONECT")
                 addConnections(string[i]);
-            }
         }
 
         return makeUniqueConnections();

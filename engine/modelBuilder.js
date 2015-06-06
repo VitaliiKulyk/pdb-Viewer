@@ -1,6 +1,5 @@
 ﻿var modelBuilder = (function () {
-    var colors = [0xFF9933, 0xCC6633, 0x9999CC, 0xCC0033];
-
+    
     var getModel = function (atoms, connections, scene) {
         var uniqueElements = _.uniq(_.map(_.flatten(atoms), function (value) {
             return value.element;
@@ -8,7 +7,7 @@
 
         atoms = _.each(atoms, function (value) { //atom = value
             var index = uniqueElements.indexOf(value.element);
-            value.color = colors[index];
+            value.color = config.colors[index];
             return value;
         });
 
@@ -19,7 +18,7 @@
     var getAtomModels = function (atoms, scene) {
         _.each(atoms, function (atom) {
             var geometry = new THREE.SphereGeometry(0.3, 15, 15);
-            var texture = THREE.ImageUtils.loadTexture('ball.png');
+            var texture = THREE.ImageUtils.loadTexture(config.fileTexture);
             texture.anisotropy = 8;
             var color = atom.color;
             var material = new THREE.MeshPhongMaterial({ map: texture, color: color });

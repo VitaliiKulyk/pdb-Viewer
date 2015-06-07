@@ -1,4 +1,6 @@
-﻿var core = (function () {
+﻿var model;
+
+var core = (function () {
 
     var readFile = function (evt) {
         var file = evt.target.files[0];
@@ -6,7 +8,7 @@
             var reader = new FileReader();
             reader.onload = function () {
                 var fileStr = reader.result;
-                var model = pdbParser.parse(fileStr);
+                model = pdbParser.parse(fileStr);
                 console.log(model);
                 sceneBuilder.renderScene(model);
             }

@@ -25,3 +25,5 @@ $(window).resize(function () {
     $("#webjs").width(W).height(H);
     renderer.setSize(W, H);
 });
+
+document.addEventListener('mousemove', sceneBuilder.mouseMove, false);

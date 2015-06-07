@@ -21,7 +21,8 @@
             var texture = THREE.ImageUtils.loadTexture(config.fileTexture);
             texture.anisotropy = 8;
             var color = atom.color;
-            var material = new THREE.MeshPhongMaterial({ map: texture, color: color });
+            material = new THREE.MeshLambertMaterial({ color: color});
+           // var material = new THREE.MeshPhongMaterial({ map: texture, color: color });
             var mesh = new THREE.Mesh(geometry, material);
             mesh.castShadow = true;
             mesh.receiveShadow = true;

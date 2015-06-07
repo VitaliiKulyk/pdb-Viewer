@@ -2,6 +2,9 @@
 
     var t = 0;
     var scene, camera, center;
+    var mouse = new THREE.Vector2();
+    var raycaster;
+    var intersected;
 
     function getCenter(model) {
         var maxX = _.max(model.atoms, function (atom) { return atom.position.x; }).position.x;
@@ -34,14 +37,53 @@
         camera.position.z = center.z + (Math.cos(Math.PI * 2 * t) * config.cameraPositionScale);
         camera.lookAt(center);
         t += 1 / config.timeStep;
-        renderer.render(scene, camera);
 
+        selectedObject();
+
+        renderer.render(scene, camera);
         setTimeout(function () {
             requestAnimationFrame(animate);
         }, 1000 / 60);
     }
+    
+
+    var selectedObject = function () {
+        raycaster.setFromCamera(mouse, camera);    
+        var intersects = raycaster.intersectObjects(scene.children);
+        var material;
+        if (intersects.length > 0) {
+            if (intersected != intersects[0].object) {
+                if (intersected)
+                    intersected.material.color.setHex(intersected.currentHex);
+                intersected = intersects[0].object;
+                intersected.currentHex = intersected.material.color.getHex();
+                intersected.material.color.setHex(0xff0000);
+
+                ///
+                
+                var atom = modelHelper.getAtomByPosition(model, intersected.position);
+
+                if (atom) {
+                    console.log(atom);
+                }
+
+            }
+        } else {
+            if (intersected)
+                intersected.material.color.setHex(intersected.currentHex);
+            intersected = null;
+        }
+    }
+
+    var mouseMove = function (event) {
+        event.preventDefault();
+        var divElement = document.getElementById("molecula");
+        mouse.x = ((event.clientX - divElement.offsetLeft) / divElement.clientWidth) * 2 - 1;
+        mouse.y = -((event.clientY - divElement.offsetTop) / divElement.clientHeight) * 2 + 1;
+    }
 
     var renderScene = function (model) {
+        raycaster = new THREE.Raycaster();
         scene = new THREE.Scene();
         modelBuilder.getModel(model.atoms, model.connections, scene);
         center = getCenter(model);
@@ -59,6 +101,7 @@
     }
 
     return {
-        renderScene: renderScene
+        renderScene: renderScene,
+        mouseMove: mouseMove
     }
 })();

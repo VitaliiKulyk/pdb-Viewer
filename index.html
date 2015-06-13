@@ -40,13 +40,13 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Model<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <a href="javascript:showModel();"><i class="fa fa-bar-chart-o fa-fw"></i> Model<!--<span class="fa arrow"></span>--></a>
+                            <!--<ul class="nav nav-second-level">
                                 <li><a href="flot.html">Flot Charts</a></li>
                                 <li><a href="morris.html">Morris.js Charts</a></li>
-                            </ul>
+                            </ul>-->
                         </li>
-                        <li><a href="#table"><i class="fa fa-table fa-fw"></i> Tables</a></li>
+                        <li ><a href="javascript:showTable();"><i class="fa fa-table fa-fw"></i> Tables</a></li>
                     </ul>
                 </div>
             </div>
@@ -67,6 +67,16 @@
             </div>
             <hr />
             <div id="molecula"></div>
+            <table id="table" class="table" hidden>
+                <tr>
+                    <th>Element</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Z</th>       
+                </tr>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
         </div>
     </div>
 </body>

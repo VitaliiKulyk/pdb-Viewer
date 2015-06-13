@@ -27,3 +27,13 @@ $(window).resize(function () {
 });
 
 document.addEventListener('mousemove', sceneBuilder.mouseMove, false);
+
+var showTable = function(){
+    $('#table').show();
+    $('#molecula').hide();
+}
+
+var showModel = function () {
+    $('#table').hide();
+    $('#molecula').show();
+}

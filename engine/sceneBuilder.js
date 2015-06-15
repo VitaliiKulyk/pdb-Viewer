@@ -58,15 +58,10 @@
                 intersected = intersects[0].object;
                 intersected.currentHex = intersected.material.color.getHex();
                 intersected.material.color.setHex(0xff0000);
-
-                ///
                 
                 var atom = modelHelper.getAtomByPosition(model, intersected.position);
-
-                if (atom) {
+                if (atom) 
                     console.log(atom);
-                }
-
             }
         } else {
             if (intersected)

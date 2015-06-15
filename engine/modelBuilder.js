@@ -17,12 +17,11 @@
 
     var getAtomModels = function (atoms, scene) {
         _.each(atoms, function (atom) {
-            var geometry = new THREE.SphereGeometry(0.3, 15, 15);
+            var geometry = new THREE.SphereGeometry(config.size, 15, 15);
             var texture = THREE.ImageUtils.loadTexture(config.fileTexture);
             texture.anisotropy = 8;
             var color = atom.color;
             material = new THREE.MeshLambertMaterial({ color: color});
-           // var material = new THREE.MeshPhongMaterial({ map: texture, color: color });
             var mesh = new THREE.Mesh(geometry, material);
             mesh.castShadow = true;
             mesh.receiveShadow = true;

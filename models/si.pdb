@@ -1,0 +1,29 @@
+﻿HEADER
+HETATM    1  C   UNK  0001      -1.000  -1.000  -1.000
+HETATM    2  C   UNK  0001      -1.000  -1.000   1.000
+HETATM    3  C   UNK  0001      -1.000   1.000  -1.000
+HETATM    4  C   UNK  0001      -1.000   1.000   1.000
+HETATM    5  C   UNK  0001       1.000  -1.000  -1.000
+HETATM    6  C   UNK  0001       1.000  -1.000   1.000
+HETATM    7  C   UNK  0001       1.000   1.000  -1.000
+HETATM    8  C   UNK  0001       1.000   1.000   1.000
+HETATM    9  C   UNK  0001       0.000   0.000   1.000
+HETATM   10  C   UNK  0001       1.000   0.000   0.000
+HETATM   11  C   UNK  0001       0.000   1.000   0.000
+HETATM   12  C   UNK  0001       0.000  -1.000   0.000
+HETATM   13  C   UNK  0001      -1.000   0.000   0.000
+HETATM   14  C   UNK  0001       0.000   0.000  -1.000
+HETATM   15  C   UNK  0001       0.500   0.500   0.500
+HETATM   16  C   UNK  0001      -0.500  -0.500  -0.500
+HETATM   17  C   UNK  0001       0.500   0.500  -0.500
+HETATM   18  C   UNK  0001      -0.500  -0.500   0.500
+CONECT    1    2	3	 5
+CONECT    2    1	4	 6
+CONECT    3    4	7
+CONECT    4    3	8
+CONECT    5    1	6	 7
+CONECT    6    2	8
+CONECT    8    7	4	 6
+CONECT    7	   5
+
+END

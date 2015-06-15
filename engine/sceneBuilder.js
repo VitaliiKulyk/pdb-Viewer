@@ -5,6 +5,7 @@
     var mouse = new THREE.Vector2();
     var raycaster;
     var intersected;
+    var demoMode = true;
 
     function getCenter(model) {
         var maxX = _.max(model.atoms, function (atom) { return atom.position.x; }).position.x;
@@ -39,11 +40,13 @@
         t += 1 / config.timeStep;
 
         selectedObject();
-
         renderer.render(scene, camera);
-        setTimeout(function () {
-            requestAnimationFrame(animate);
-        }, 1000 / 60);
+
+        if (demoMode) {
+						setTimeout(function () {
+								requestAnimationFrame(animate);
+        		}, 1000 / 60);
+        }
     }
     
 
@@ -88,6 +91,12 @@
         light(10, -10, -10);
         light(-10, 10, 10);
         $("#molecula").show();
+
+			  //controls
+        controls = new THREE.OrbitControls(camera);
+        controls.damping = 0.1;
+        controls.addEventListener('change', function () { renderer.render(scene, camera); });
+
         animate();
     }
 
